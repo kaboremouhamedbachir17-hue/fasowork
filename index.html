@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FASOWORK – Travail, Logement, Achat/Vente, Services</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background: #f4f6f8; }
+    header { background: #0b5e3b; color: white; padding: 20px; text-align: center; }
+    .container { padding: 20px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; }
+    .card { background: white; padding: 20px; border-radius: 10px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); cursor: pointer; }
+    .card:hover { background: #e8f5ef; }
+    footer { background: #0b5e3b; color: white; text-align: center; padding: 10px; margin-top: 20px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>FASOWORK</h1>
+  <p>Travail • Logement • Achat/Vente • Services</p>
+</header>
+
+<div class="container">
+  <h2>Que cherchez-vous ?</h2>
+  <div class="grid">
+    <div class="card">💼<br>Travail</div>
+    <div class="card">🏠<br>Logement</div>
+    <div class="card">🛒<br>Achat / Vente</div>
+    <div class="card">🔧<br>Services</div>
+  </div>
+</div>
+
+<!-- PAGE TRAVAIL -->
+<div class="container">
+  <h2>💼 Offres de Travail</h2>
+
+  <!-- LISTE DES OFFRES (EXEMPLE) -->
+  <div class="card">
+    <h3>Ouvrier de chantier</h3>
+    <p>Lieu : Ouagadougou</p>
+    <p>Contact : <a href="https://wa.me/22600000000">WhatsApp</a></p>
+  </div>
+
+  <div class="card">
+    <h3>Secrétaire</h3>
+    <p>Lieu : Ouagadougou</p>
+    <p>Contact : <a href="https://wa.me/22600000000">WhatsApp</a></p>
+  </div>
+
+  <!-- FORMULAIRE -->
+  <h3>Publier une offre de travail</h3>
+  <form>
+    <input type="text" placeholder="Titre du poste" required /><br><br>
+    <input type="text" placeholder="Ville" required /><br><br>
+    <textarea placeholder="Description du travail" required></textarea><br><br>
+    <input type="text" placeholder="Numéro WhatsApp" required /><br><br>
+    <button type="submit">Publier</button>
+  </form>
+</div>
+
+<!-- PAGE LOGEMENT -->
+<div class="container">
+  <h2>🏠 Logements disponibles</h2>
+
+  <!-- LISTE DES LOGEMENTS (EXEMPLES) -->
+  <div class="card">
+    <h3>Chambre à louer</h3>
+    <p>Quartier : Tampouy</p>
+    <p>Prix : 25 000 FCFA / mois</p>
+    <p>Contact : <a href="https://wa.me/22600000000">WhatsApp</a></p>
+  </div>
+
+  <div class="card">
+    <h3>Studio moderne</h3>
+    <p>Quartier : Karpala</p>
+    <p>Prix : 60 000 FCFA / mois</p>
+    <p>Contact : <a href="https://wa.me/22600000000">WhatsApp</a></p>
+  </div>
+
+  <!-- FORMULAIRE -->
+  <h3>Publier un logement</h3>
+  <form>
+    <input type="text" placeholder="Type de logement (chambre, maison…)" required /><br><br>
+    <input type="text" placeholder="Quartier / Ville" required /><br><br>
+    <input type="number" placeholder="Prix (FCFA)" required /><br><br>
+    <textarea placeholder="Description du logement" required></textarea><br><br>
+    <input type="text" placeholder="Numéro WhatsApp" required /><br><br>
+    <button type="submit">Publier</button>
+  </form>
+</div>
+
+<!-- PAGE ACHAT / VENTE -->
+<div class="container">
+  <h2>🛒 Achat & Vente</h2>
+
+  <!-- LISTE DES PRODUITS (EXEMPLES) -->
+  <div class="card">
+    <h3>Téléphone Android</h3>
+    <p>Prix : 50 000 FCFA</p>
+    <p>Lieu : Ouagadougou</p>
+    <p>Contact : <a href="https://wa.me/22600000000">WhatsApp</a></p>
+  </div>
+
+  <div class="card">
+    <h3>Moto Yamaha</h3>
+    <p>Prix : 350 000 FCFA</p>
+    <p>Lieu : Ouagadougou</p>
+    <p>Contact : <a href="https://wa.me/22600000000">WhatsApp</a></p>
+  </div>
+
+  <!-- FORMULAIRE -->
+  <h3>Publier un produit</h3>
+  <form>
+    <input type="text" placeholder="Nom du produit" required /><br><br>
+    <input type="number" placeholder="Prix (FCFA)" required /><br><br>
+    <input type="text" placeholder="Ville" required /><br><br>
+    <textarea placeholder="Description du produit" required></textarea><br><br>
+    <input type="text" placeholder="Numéro WhatsApp" required /><br><br>
+    <button type="submit">Publier</button>
+  </form>
+</div>
+
+<!-- PAGE SERVICES -->
+<div class="container">
+  <h2>🔧 Services fiables</h2>
+
+  <!-- LISTE DES SERVICES (EXEMPLES) -->
+  <div class="card">
+    <h3>Plombier</h3>
+    <p>Zone : Ouagadougou</p>
+    <p>Disponibilité : Immédiate</p>
+    <p>Contact : <a href="https://wa.me/22600000000">WhatsApp</a></p>
+  </div>
+
+  <div class="card">
+    <h3>Électricien</h3>
+    <p>Zone : Ouagadougou</p>
+    <p>Disponibilité : Sur rendez-vous</p>
+    <p>Contact : <a href="https://wa.me/22600000000">WhatsApp</a></p>
+  </div>
+
+  <!-- FORMULAIRE -->
+  <h3>Publier un service</h3>
+  <form>
+    <input type="text" placeholder="Métier (plombier, soudeur…)" required /><br><br>
+    <input type="text" placeholder="Ville / Zone" required /><br><br>
+    <input type="text" placeholder="Disponibilité" required /><br><br>
+    <textarea placeholder="Description du service" required></textarea><br><br>
+    <input type="text" placeholder="Numéro WhatsApp" required /><br><br>
+    <button type="submit">Publier</button>
+  </form>
+</div>
+
+<footer>
+  <p>© 2025 FASOWORK – Connecter le Faso aux opportunités</p>
+</footer>
+
+</body>
+</html>
