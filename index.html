@@ -155,6 +155,27 @@
 <footer>
   <p>© 2025 FASOWORK – Connecter le Faso aux opportunités</p>
 </footer>
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyAtqXB6Zq4fUONHhtCIC7oILfW7KDlmdrY",
+  authDomain: "fasowork-2a6a3.firebaseapp.com",
+  projectId: "fasowork-2a6a3",
+  storageBucket: "fasowork-2a6a3.firebasestorage.app",
+  messagingSenderId: "566229002560",
+  appId: "1:566229002560:web:4ef30ecf74075ea604b2a5",
+  measurementId: "G-W35HVBJL09"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 
 </body>
 </html>
