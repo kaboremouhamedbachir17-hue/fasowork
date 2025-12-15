@@ -217,35 +217,36 @@ const analytics = getAnalytics(app);
   firebase.initializeApp(firebaseConfig);
   const auth = firebase.auth();
 
-  function register() {
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
+  window.register = function () {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
 
-    auth.createUserWithEmailAndPassword(email, password)
-      .then(() => {
-        document.getElementById("message").innerText = "✅ Compte créé";
-      })
-      .catch(error => {
-        document.getElementById("message").innerText = error.message;
-      });
-  }
+  auth.createUserWithEmailAndPassword(email, password)
+    .then(() => {
+      document.getElementById("message").innerText = "✅ Compte créé";
+    })
+    .catch(error => {
+      document.getElementById("message").innerText = error.message;
+    });
+}
 
-  function login() {
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
+window.login = function () {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
 
-    auth.signInWithEmailAndPassword(email, password)
-      .then(() => {
-        document.getElementById("message").innerText = "✅ Connecté";
-      })
-      .catch(error => {
-        document.getElementById("message").innerText = error.message;
-      });
-  }
+  auth.signInWithEmailAndPassword(email, password)
+    .then(() => {
+      document.getElementById("message").innerText = "✅ Connecté";
+    })
+    .catch(error => {
+      document.getElementById("message").innerText = error.message;
+    });
+}
                          </script>
 
 </body>
 </html>
+
 
 
 
