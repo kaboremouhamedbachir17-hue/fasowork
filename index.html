@@ -22,7 +22,12 @@
 </header><div class="container">
   <h2>Que cherchez-vous ?</h2>
   <div class="grid">
-    <div class="card">💼<br>Travail</div>
+    <div class="card" onclick="showSection('travail')">💼<br>Travail</div>
+    <div class="card" onclick="showSection('logement')">🏠<br>Logement</div>
+    <div class="card" onclick="showSection('achat')">🛒<br>Achat / Vente</div>
+    <div class="card" onclick="showSection('services')">🔧<br>Services</div>
+  </div>
+</div>
     <div class="card">🏠<br>Logement</div>
     <div class="card">🛒<br>Achat / Vente</div>
     <div class="card">🔧<br>Services</div>
@@ -32,6 +37,30 @@
   <input type="password" id="password" placeholder="Mot de passe (6 caractères min)" /><button type="button" id="signup">Créer un compte</button> <button type="button" id="login">Se connecter</button>
 
   <p id="message"></p>
+</div><!-- SECTIONS --><div class="container" id="travail" style="display:none">
+  <h2>💼 Travail</h2>
+  <div class="grid">
+    <div class="card">📢<br>Publier une offre</div>
+    <div class="card">🔍<br>Chercher un travail</div>
+  </div>
+</div><div class="container" id="logement" style="display:none">
+  <h2>🏠 Logement</h2>
+  <div class="grid">
+    <div class="card">📢<br>Publier un logement</div>
+    <div class="card">🔍<br>Chercher un logement</div>
+  </div>
+</div><div class="container" id="achat" style="display:none">
+  <h2>🛒 Achat / Vente</h2>
+  <div class="grid">
+    <div class="card">📢<br>Vendre un produit</div>
+    <div class="card">🔍<br>Acheter un produit</div>
+  </div>
+</div><div class="container" id="services" style="display:none">
+  <h2>🔧 Services</h2>
+  <div class="grid">
+    <div class="card">📢<br>Proposer un service</div>
+    <div class="card">🔍<br>Trouver un service</div>
+  </div>
 </div><footer>
   <p>© 2025 FASOWORK – Connecter le Faso aux opportunités</p>
 </footer><script type="module">
@@ -67,5 +96,10 @@
       .then(() => document.getElementById("message").innerText = "✅ Connexion réussie")
       .catch(err => document.getElementById("message").innerText = err.message);
   });
+  function showSection(id) {
+    const sections = ['travail','logement','achat','services'];
+    sections.forEach(s => document.getElementById(s).style.display = 'none');
+    document.getElementById(id).style.display = 'block';
+  }
 </script></body>
 </html>
