@@ -1,8 +1,10 @@
-<!DOCTYPE html><html lang="fr">
+<!DOCTYPE html>
+<html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FASOWORK – Travail, Logement, Achat/Vente, Services</title>
+
   <style>
     body { font-family: Arial, sans-serif; margin: 0; background: #f4f6f8; }
     header { background: #0b5e3b; color: white; padding: 20px; text-align: center; }
@@ -16,10 +18,16 @@
     button:hover { opacity: 0.9; }
   </style>
 </head>
-<body><header>
+
+<body>
+
+<header>
   <h1>FASOWORK</h1>
   <p>Travail • Logement • Achat/Vente • Services</p>
-</header><div class="container">
+</header>
+
+<!-- MENU PRINCIPAL -->
+<div class="container">
   <h2>Que cherchez-vous ?</h2>
   <div class="grid">
     <div class="card" onclick="showSection('travail')">💼<br>Travail</div>
@@ -27,38 +35,58 @@
     <div class="card" onclick="showSection('achat')">🛒<br>Achat / Vente</div>
     <div class="card" onclick="showSection('services')">🔧<br>Services</div>
   </div>
-</div><hr><div class="container">
-  <h2>🔐 Connexion / Inscription</h2>  <input type="email" id="email" placeholder="Email" />
-  <input type="password" id="password" placeholder="Mot de passe (6 caractères min)" /><button type="button" id="signup">Créer un compte</button> <button type="button" id="login">Se connecter</button>
+</div>
 
+<hr>
+
+<!-- CONNEXION / INSCRIPTION -->
+<div class="container">
+  <h2>🔐 Connexion / Inscription</h2>
+  <input type="email" id="email" placeholder="Email" />
+  <input type="password" id="password" placeholder="Mot de passe (6 caractères min)" />
+  <button id="signup">Créer un compte</button>
+  <button id="login">Se connecter</button>
   <p id="message"></p>
-</div><!-- SECTIONS --><div class="container" id="travail" style="display:none">
+</div>
+
+<!-- SECTIONS -->
+<div class="container" id="travail" style="display:none">
   <h2>💼 Travail</h2>
   <div class="grid">
     <div class="card">📢<br>Publier une offre</div>
     <div class="card">🔍<br>Chercher un travail</div>
   </div>
-</div><div class="container" id="logement" style="display:none">
+</div>
+
+<div class="container" id="logement" style="display:none">
   <h2>🏠 Logement</h2>
   <div class="grid">
     <div class="card">📢<br>Publier un logement</div>
     <div class="card">🔍<br>Chercher un logement</div>
   </div>
-</div><div class="container" id="achat" style="display:none">
+</div>
+
+<div class="container" id="achat" style="display:none">
   <h2>🛒 Achat / Vente</h2>
   <div class="grid">
     <div class="card">📢<br>Vendre un produit</div>
     <div class="card">🔍<br>Acheter un produit</div>
   </div>
-</div><div class="container" id="services" style="display:none">
+</div>
+
+<div class="container" id="services" style="display:none">
   <h2>🔧 Services</h2>
   <div class="grid">
     <div class="card">📢<br>Proposer un service</div>
     <div class="card">🔍<br>Trouver un service</div>
   </div>
-</div><footer>
+</div>
+
+<footer>
   <p>© 2025 FASOWORK – Connecter le Faso aux opportunités</p>
-</footer><script type="module">
+</footer>
+
+<script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
   import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
@@ -74,28 +102,29 @@
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
 
-  document.getElementById("signup").addEventListener("click", () => {
+  document.getElementById("signup").onclick = () => {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
-
     createUserWithEmailAndPassword(auth, email, password)
-      .then(() => document.getElementById("message").innerText = "✅ Compte créé avec succès")
-      .catch(err => document.getElementById("message").innerText = err.message);
-  });
+      .then(() => message.innerText = "✅ Compte créé avec succès")
+      .catch(err => message.innerText = err.message);
+  };
 
-  document.getElementById("login").addEventListener("click", () => {
+  document.getElementById("login").onclick = () => {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
-
     signInWithEmailAndPassword(auth, email, password)
-      .then(() => document.getElementById("message").innerText = "✅ Connexion réussie")
-      .catch(err => document.getElementById("message").innerText = err.message);
-  });
-  function showSection(id) {
-    const sections = ['travail','logement','achat','services'];
-    sections.forEach(s => document.getElementById(s).style.display = 'none');
+      .then(() => message.innerText = "✅ Connexion réussie")
+      .catch(err => message.innerText = err.message);
+  };
+
+  window.showSection = function(id) {
+    ['travail','logement','achat','services'].forEach(s => {
+      document.getElementById(s).style.display = 'none';
+    });
     document.getElementById(id).style.display = 'block';
   }
-</script></body>
-</html>
+</script>
 
+</body>
+</html>
