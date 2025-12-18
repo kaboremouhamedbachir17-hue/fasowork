@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FASOWORK – Travail, Logement, Achat/Vente, Services</title>
-
   <style>
     body { font-family: Arial, sans-serif; margin: 0; background: #f4f6f8; }
     header { background: #0b5e3b; color: white; padding: 20px; text-align: center; }
@@ -16,9 +15,9 @@
     input, textarea, button { width: 100%; max-width: 400px; padding: 10px; margin: 5px 0; }
     button { background: #0b5e3b; color: white; border: none; border-radius: 5px; cursor: pointer; }
     button:hover { opacity: 0.9; }
+    .publication { background: #fff; padding: 10px; margin: 10px 0; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
   </style>
 </head>
-
 <body>
 
 <header>
@@ -26,7 +25,6 @@
   <p>Travail • Logement • Achat/Vente • Services</p>
 </header>
 
-<!-- MENU PRINCIPAL -->
 <div class="container">
   <h2>Que cherchez-vous ?</h2>
   <div class="grid">
@@ -39,7 +37,6 @@
 
 <hr>
 
-<!-- CONNEXION / INSCRIPTION -->
 <div class="container">
   <h2>🔐 Connexion / Inscription</h2>
   <input type="email" id="email" placeholder="Email" />
@@ -53,93 +50,93 @@
 <div class="container" id="travail" style="display:none">
   <h2>💼 Travail</h2>
   <div class="grid">
-    <div class="card">📢<br>Publier une offre</div>
-    <div class="card">🔍<br>Chercher un travail</div>
+    <div class="card" onclick="showSection('travail-publier')">📢<br>Publier une offre</div>
+    <div class="card" onclick="showSection('travail-chercher')">🔍<br>Chercher un travail</div>
   </div>
 </div>
 <div class="container" id="travail-publier" style="display:none">
   <h2>📢 Publier une offre de travail</h2>
-
-  <input type="text" placeholder="Titre du poste">
-  <input type="text" placeholder="Ville">
-  <textarea placeholder="Description du travail"></textarea>
-  <input type="text" placeholder="Numéro WhatsApp">
-
-  <button>Publier</button>
+  <input type="text" id="travail-titre" placeholder="Titre du poste">
+  <input type="text" id="travail-ville" placeholder="Ville">
+  <textarea id="travail-desc" placeholder="Description du travail"></textarea>
+  <input type="text" id="travail-whatsapp" placeholder="Numéro WhatsApp">
+  <button onclick="publierTravail()">Publier</button>
+  <p id="travail-msg"></p>
 </div>
 
 <div class="container" id="travail-chercher" style="display:none">
   <h2>🔍 Chercher un travail</h2>
-  <p>Les offres de travail seront affichées ici.</p>
+  <div id="travail-liste"></div>
 </div>
+
+<!-- Logement -->
 <div class="container" id="logement" style="display:none">
   <h2>🏠 Logement</h2>
   <div class="grid">
-    <div class="card">📢<br>Publier un logement</div>
-    <div class="card">🔍<br>Chercher un logement</div>
+    <div class="card" onclick="showSection('logement-publier')">📢<br>Publier un logement</div>
+    <div class="card" onclick="showSection('logement-chercher')">🔍<br>Chercher un logement</div>
   </div>
 </div>
 <div class="container" id="logement-publier" style="display:none">
   <h2>📢 Publier un logement</h2>
-
-  <input type="text" placeholder="Type de logement (chambre, maison)">
-  <input type="text" placeholder="Quartier / Ville">
-  <input type="number" placeholder="Prix (FCFA)">
-  <textarea placeholder="Description du logement"></textarea>
-  <input type="text" placeholder="Numéro WhatsApp">
-
-  <button>Publier</button>
+  <input type="text" id="logement-type" placeholder="Type de logement (chambre, maison)">
+  <input type="text" id="logement-ville" placeholder="Quartier / Ville">
+  <input type="number" id="logement-prix" placeholder="Prix (FCFA)">
+  <textarea id="logement-desc" placeholder="Description du logement"></textarea>
+  <input type="text" id="logement-whatsapp" placeholder="Numéro WhatsApp">
+  <button onclick="publierLogement()">Publier</button>
+  <p id="logement-msg"></p>
 </div>
-
 <div class="container" id="logement-chercher" style="display:none">
   <h2>🔍 Chercher un logement</h2>
-  <p>Les logements disponibles apparaîtront ici.</p>
+  <div id="logement-liste"></div>
 </div>
+
+<!-- Achat / Vente -->
 <div class="container" id="achat" style="display:none">
   <h2>🛒 Achat / Vente</h2>
   <div class="grid">
-    <div class="card">📢<br>Vendre un produit</div>
-    <div class="card">🔍<br>Acheter un produit</div>
+    <div class="card" onclick="showSection('achat-vendre')">📢<br>Vendre un produit</div>
+    <div class="card" onclick="showSection('achat-acheter')">🔍<br>Acheter un produit</div>
   </div>
 </div>
 <div class="container" id="achat-vendre" style="display:none">
   <h2>📢 Vendre un produit</h2>
-
-  <input type="text" placeholder="Nom du produit">
-  <input type="number" placeholder="Prix (FCFA)">
-  <input type="text" placeholder="Ville">
-  <textarea placeholder="Description du produit"></textarea>
-  <input type="text" placeholder="Numéro WhatsApp">
-
-  <button>Publier</button>
+  <input type="text" id="achat-nom" placeholder="Nom du produit">
+  <input type="number" id="achat-prix" placeholder="Prix (FCFA)">
+  <input type="text" id="achat-ville" placeholder="Ville">
+  <textarea id="achat-desc" placeholder="Description du produit"></textarea>
+  <input type="text" id="achat-whatsapp" placeholder="Numéro WhatsApp">
+  <button onclick="publierAchat()">Publier</button>
+  <p id="achat-msg"></p>
 </div>
-
 <div class="container" id="achat-acheter" style="display:none">
   <h2>🔍 Acheter un produit</h2>
-  <p>Les produits disponibles apparaîtront ici.</p>
+  <div id="achat-liste"></div>
 </div>
+
+<!-- Services -->
 <div class="container" id="services" style="display:none">
   <h2>🔧 Services</h2>
   <div class="grid">
-    <div class="card">📢<br>Proposer un service</div>
-    <div class="card">🔍<br>Trouver un service</div>
+    <div class="card" onclick="showSection('services-proposer')">📢<br>Proposer un service</div>
+    <div class="card" onclick="showSection('services-trouver')">🔍<br>Trouver un service</div>
   </div>
 </div>
 <div class="container" id="services-proposer" style="display:none">
   <h2>📢 Proposer un service</h2>
-
-  <input type="text" placeholder="Métier (plombier, électricien…)">
-  <input type="text" placeholder="Zone / Ville">
-  <textarea placeholder="Description du service"></textarea>
-  <input type="text" placeholder="Numéro WhatsApp">
-
-  <button>Publier</button>
+  <input type="text" id="service-metier" placeholder="Métier (plombier, électricien…)">
+  <input type="text" id="service-ville" placeholder="Zone / Ville">
+  <textarea id="service-desc" placeholder="Description du service"></textarea>
+  <input type="text" id="service-whatsapp" placeholder="Numéro WhatsApp">
+  <button onclick="publierService()">Publier</button>
+  <p id="service-msg"></p>
 </div>
-
 <div class="container" id="services-trouver" style="display:none">
   <h2>🔍 Trouver un service</h2>
-  <p>Les services disponibles apparaîtront ici.</p>
+  <div id="service-liste"></div>
 </div>
+
 <footer>
   <p>© 2025 FASOWORK – Connecter le Faso aux opportunités</p>
 </footer>
@@ -147,6 +144,7 @@
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
   import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+  import { getFirestore, collection, addDoc, query, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyAtqXB6Zq4fUONHhtCIC7oILfW7KDlmdrY",
@@ -159,10 +157,15 @@
 
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
+  const db = getFirestore(app);
 
+  const message = document.getElementById("message");
+
+  // Authentification
   document.getElementById("signup").onclick = () => {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
+    if(password.length < 6){ message.innerText="Le mot de passe doit avoir au moins 6 caractères"; return; }
     createUserWithEmailAndPassword(auth, email, password)
       .then(() => message.innerText = "✅ Compte créé avec succès")
       .catch(err => message.innerText = err.message);
@@ -176,17 +179,95 @@
       .catch(err => message.innerText = err.message);
   };
 
-  window.showSection = function(id) {
-    ['travail','logement','achat','services'].forEach(s => {
-      document.getElementById(s).style.display = 'none';
-    });
-    document.getElementById(id).style.display = 'block';
+  // Navigation des sections
+  window.showSection = function(id){
+    const sections = document.querySelectorAll(".container");
+    sections.forEach(s => s.style.display="none");
+    document.getElementById(id).style.display="block";
+  };
+
+  // Fonction pour publier et afficher les données
+  async function publierTravail(){
+    const titre = document.getElementById("travail-titre").value;
+    const ville = document.getElementById("travail-ville").value;
+    const desc = document.getElementById("travail-desc").value;
+    const whatsapp = document.getElementById("travail-whatsapp").value;
+    if(!titre||!ville||!desc||!whatsapp){ document.getElementById("travail-msg").innerText="Veuillez remplir tous les champs"; return; }
+    await addDoc(collection(db,"travail"),{titre,ville,desc,whatsapp});
+    document.getElementById("travail-msg").innerText="✅ Offre publiée";
+    document.getElementById("travail-titre").value="";
+    document.getElementById("travail-ville").value="";
+    document.getElementById("travail-desc").value="";
+    document.getElementById("travail-whatsapp").value="";
   }
+
+  async function publierLogement(){
+    const type = document.getElementById("logement-type").value;
+    const ville = document.getElementById("logement-ville").value;
+    const prix = document.getElementById("logement-prix").value;
+    const desc = document.getElementById("logement-desc").value;
+    const whatsapp = document.getElementById("logement-whatsapp").value;
+    if(!type||!ville||!prix||!desc||!whatsapp){ document.getElementById("logement-msg").innerText="Veuillez remplir tous les champs"; return; }
+    await addDoc(collection(db,"logement"),{type,ville,prix,desc,whatsapp});
+    document.getElementById("logement-msg").innerText="✅ Logement publié";
+    document.getElementById("logement-type").value="";
+    document.getElementById("logement-ville").value="";
+    document.getElementById("logement-prix").value="";
+    document.getElementById("logement-desc").value="";
+    document.getElementById("logement-whatsapp").value="";
+  }
+
+  async function publierAchat(){
+    const nom = document.getElementById("achat-nom").value;
+    const prix = document.getElementById("achat-prix").value;
+    const ville = document.getElementById("achat-ville").value;
+    const desc = document.getElementById("achat-desc").value;
+    const whatsapp = document.getElementById("achat-whatsapp").value;
+    if(!nom||!prix||!ville||!desc||!whatsapp){ document.getElementById("achat-msg").innerText="Veuillez remplir tous les champs"; return; }
+    await addDoc(collection(db,"achat"),{nom,prix,ville,desc,whatsapp});
+    document.getElementById("achat-msg").innerText="✅ Produit publié";
+    document.getElementById("achat-nom").value="";
+    document.getElementById("achat-prix").value="";
+    document.getElementById("achat-ville").value="";
+    document.getElementById("achat-desc").value="";
+    document.getElementById("achat-whatsapp").value="";
+  }
+
+  async function publierService(){
+    const metier = document.getElementById("service-metier").value;
+    const ville = document.getElementById("service-ville").value;
+    const desc = document.getElementById("service-desc").value;
+    const whatsapp = document.getElementById("service-whatsapp").value;
+    if(!metier||!ville||!desc||!whatsapp){ document.getElementById("service-msg").innerText="Veuillez remplir tous les champs"; return; }
+    await addDoc(collection(db,"services"),{metier,ville,desc,whatsapp});
+    document.getElementById("service-msg").innerText="✅ Service publié";
+    document.getElementById("service-metier").value="";
+    document.getElementById("service-ville").value="";
+    document.getElementById("service-desc").value="";
+    document.getElementById("service-whatsapp").value="";
+  }
+
+  // Affichage en temps réel
+  const afficherListe = (col, elementId, champs) => {
+    const liste = document.getElementById(elementId);
+    const q = query(collection(db,col));
+    onSnapshot(q, snapshot => {
+      liste.innerHTML="";
+      snapshot.forEach(doc => {
+        const data = doc.data();
+        let html = `<div class="publication">`;
+        champs.forEach(c => { html += `<p><strong>${c.label}:</strong> ${data[c.key]}</p>`; });
+        html += `</div>`;
+        liste.innerHTML += html;
+      });
+    });
+  }
+
+  afficherListe("travail","travail-liste",[{key:"titre",label:"Titre"},{key:"ville",label:"Ville"},{key:"desc",label:"Description"},{key:"whatsapp",label:"WhatsApp"}]);
+  afficherListe("logement","logement-liste",[{key:"type",label:"Type"},{key:"ville",label:"Ville"},{key:"prix",label:"Prix"},{key:"desc",label:"Description"},{key:"whatsapp",label:"WhatsApp"}]);
+  afficherListe("achat","achat-liste",[{key:"nom",label:"Produit"},{key:"prix",label:"Prix"},{key:"ville",label:"Ville"},{key:"desc",label:"Description"},{key:"whatsapp",label:"WhatsApp"}]);
+  afficherListe("services","service-liste",[{key:"metier",label:"Métier"},{key:"ville",label:"Ville"},{key:"desc",label:"Description"},{key:"whatsapp",label:"WhatsApp"}]);
 </script>
 
 </body>
 </html>
-
-
-
-
