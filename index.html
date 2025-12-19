@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FASOWORK – Travail, Logement, Achat/Vente, Services</title>
+  <title>FASOWORK – Logement</title>
 
   <style>
     body { font-family: Arial, sans-serif; margin: 0; background: #f4f6f8; }
@@ -23,17 +23,15 @@
 
 <header>
   <h1>FASOWORK</h1>
-  <p>Travail • Logement • Achat/Vente • Services</p>
+  <p style="margin:5px 0;">Trouver un logement simplement</p>
+  <p style="font-size:14px;opacity:0.9;">Les opportunités près de chez soi</p>
 </header>
 
 <!-- MENU PRINCIPAL -->
 <div class="container">
   <h2>Que cherchez-vous ?</h2>
   <div class="grid">
-    <div class="card" onclick="showSection('travail')">💼<br>Travail</div>
     <div class="card" onclick="showSection('logement')">🏠<br>Logement</div>
-    <div class="card" onclick="showSection('achat')">🛒<br>Achat / Vente</div>
-    <div class="card" onclick="showSection('services')">🔧<br>Services</div>
   </div>
 </div>
 
@@ -49,106 +47,33 @@
   <p id="message"></p>
 </div>
 
-<!-- SECTIONS -->
-<div class="container" id="travail" style="display:none">
-  <h2>💼 Travail</h2>
-  <div class="grid">
-    <div class="card"onclick="showSection('travail-publier')">📢<br>Publier une offre</div>
-    <div class="card"onclick=showSection('travail-chercher')">🔍<br>Chercher un travail</div>
-  </div>
-</div>
-<div class="container" id="travail-publier" style="display:none">
-  
-  <h2>📢 Publier une offre de travail</h2>
-
-  <input type="text" placeholder="Titre du poste">
-  <input type="text" placeholder="Ville">
-  <textarea placeholder="Description du travail"></textarea>
-  <input type="text" placeholder="Numéro WhatsApp">
-
-  <button>Publier</button>
-</div>
-
-<div class="container" id="travail-chercher" style="display:none">
-  <button class="back-btn" onclick="showSection('travail')">⬅ Retour</button>
-  <h2>🔍 Chercher un travail</h2>
-  <p>Les offres de travail seront affichées ici.</p>
-</div>
+<!-- LOGEMENT -->
 <div class="container" id="logement" style="display:none">
-  <button class="back-btn" onclick="showSection('travail')">⬅ Retour</button>
+  <button onclick="showHome()">⬅ Retour</button>
   <h2>🏠 Logement</h2>
   <div class="grid">
-    <div class="card"onclick="showSection('logement-publier')">📢<br>Publier un logement</div>
-    <div class="card"onclick="showSection('logement-chercher')">🔍<br>Chercher un logement</div>
+    <div class="card" onclick="showSection('logement-publier')">📢<br>Publier un logement</div>
+    <div class="card" onclick="showSection('logement-chercher')">🔍<br>Chercher un logement</div>
   </div>
 </div>
-<div class="container" id="logement-publier" style="display:none">
-  <button class="back-btn" onclick="showSection('logement')">⬅ Retour</button>
-  <h2>📢 Publier un logement</h2>
 
-  <input type="text" placeholder="Type de logement (chambre, maison)">
+<div class="container" id="logement-publier" style="display:none">
+  <button onclick="showSection('logement')">⬅ Retour</button>
+  <h2>📢 Publier un logement</h2>
+  <input type="text" placeholder="Type de logement">
   <input type="text" placeholder="Quartier / Ville">
   <input type="number" placeholder="Prix (FCFA)">
   <textarea placeholder="Description du logement"></textarea>
   <input type="text" placeholder="Numéro WhatsApp">
-
   <button>Publier</button>
 </div>
 
 <div class="container" id="logement-chercher" style="display:none">
-  <button class="back-btn" onclick="showSection('logement')">⬅ Retour</button>
+  <button onclick="showSection('logement')">⬅ Retour</button>
   <h2>🔍 Chercher un logement</h2>
   <p>Les logements disponibles apparaîtront ici.</p>
 </div>
-<div class="container" id="achat" style="display:none">
-  <button class="back-btn" onclick="showSection('logement')">⬅ Retour</button>
-  <h2>🛒 Achat / Vente</h2>
-  <div class="grid">
-    <div class="card"onclick="showSection('achat-vendre')">📢<br>Vendre un produit</div>
-    <div class="card"onclick="showSection('achat-acheter')">🔍<br>Acheter un produit</div>
-  </div>
-</div>
-<div class="container" id="achat-vendre" style="display:none">
-  <h2>📢 Vendre un produit</h2>
 
-  <input type="text" placeholder="Nom du produit">
-  <input type="number" placeholder="Prix (FCFA)">
-  <input type="text" placeholder="Ville">
-  <textarea placeholder="Description du produit"></textarea>
-  <input type="text" placeholder="Numéro WhatsApp">
-
-  <button>Publier</button>
-</div>
-
-<div class="container" id="achat-acheter" style="display:none">
-  <button class="back-btn" onclick="showSection('achat')">⬅ Retour</button>
-  <h2>🔍 Acheter un produit</h2>
-  <p>Les produits disponibles apparaîtront ici.</p>
-</div>
-<div class="container" id="services" style="display:none">
-  <button class="back-btn" onclick="showSection('achat')">⬅ Retour</button>
-  <h2>🔧 Services</h2>
-  <div class="grid">
-    <div class="card"oncick="showSection('services-proposer')">📢<br>Proposer un service</div>
-    <div class="card"onclick="showSection(services-trouver')">🔍<br>Trouver un service</div>
-  </div>
-</div>
-<div class="container" id="services-proposer" style="display:none">
-  <h2>📢 Proposer un service</h2>
-
-  <input type="text" placeholder="Métier (plombier, électricien…)">
-  <input type="text" placeholder="Zone / Ville">
-  <textarea placeholder="Description du service"></textarea>
-  <input type="text" placeholder="Numéro WhatsApp">
-
-  <button>Publier</button>
-</div>
-
-<div class="container" id="services-trouver" style="display:none">
-  <button class="back-btn" onclick="showSection('services')">⬅ Retour</button>
-  <h2>🔍 Trouver un service</h2>
-  <p>Les services disponibles apparaîtront ici.</p>
-</div>
 <footer>
   <p>© 2025 FASOWORK – Connecter le Faso aux opportunités</p>
 </footer>
@@ -173,7 +98,7 @@
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     createUserWithEmailAndPassword(auth, email, password)
-      .then(() => message.innerText = "✅ Compte créé avec succès")
+      .then(() => message.innerText = "✅ Compte créé")
       .catch(err => message.innerText = err.message);
   };
 
@@ -181,13 +106,21 @@
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     signInWithEmailAndPassword(auth, email, password)
-      .then(() => message.innerText = "✅ Connexion réussie")
+      .then(() => message.innerText = "✅ Connecté")
       .catch(err => message.innerText = err.message);
   };
+</script>
 
-  window.showSection = function(id) {
-    ['travail','logement','achat','services'].forEach(s => {
-      document.getElementById(s).style.display = 'none';
+<script>
+  function showHome() {
+    document.querySelectorAll('.container[id]').forEach(el => el.style.display = 'none');
+  }
+
+  function showSection(id) {
+    const sections = ['logement','logement-publier','logement-chercher'];
+    sections.forEach(s => {
+      const el = document.getElementById(s);
+      if (el) el.style.display = 'none';
     });
     document.getElementById(id).style.display = 'block';
   }
@@ -195,5 +128,3 @@
 
 </body>
 </html>
-
-
